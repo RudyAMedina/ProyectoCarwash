@@ -9,7 +9,7 @@
         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.bunny.net">
         <link href="https://fonts.bunny.net/css?family=instrument-sans:400,500,600" rel="stylesheet" />
-        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyApEx2GTv--JVnqQH14VD6UXWfa94Spd7k&callback=initMap" async defer></script>
+        <script src="https://maps.googleapis.com/maps/api/js?key=" async defer></script>
 
 
         <!-- Styles / Scripts -->
