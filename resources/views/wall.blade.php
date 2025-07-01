@@ -20,11 +20,65 @@
               
             </style>
         @endif
+
+        <style>
+            /* Estilos personalizados */
+            .hero-section {
+                position: relative;
+                overflow: hidden;
+            }
+            
+            .hero-section::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background: url('https://images.unsplash.com/photo-1489824904134-891ab64532f1?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') no-repeat center center;
+                background-size: cover;
+                opacity: 0.1;
+            }
+            
+            .shadow-hover {
+                box-shadow: 0 5px 15px rgba(0, 123, 255, 0.08);
+                transition: all 0.3s ease;
+                border-radius: 10px;
+                overflow: hidden;
+            }
+            
+            .shadow-hover:hover {
+                box-shadow: 0 10px 25px rgba(0, 123, 255, 0.15);
+                transform: translateY(-5px);
+            }
+            
+            .card-img-container:hover img {
+                transform: scale(1.05);
+            }
+            
+            .date-badge {
+                box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            }
+            
+            .empty-state {
+                background-color: #f8fafc;
+                border-radius: 10px;
+            }
+            
+            .service-tags .badge {
+                transition: all 0.2s ease;
+            }
+            
+            .service-tags .badge:hover {
+                transform: translateY(-2px);
+            }
+        </style>
     </head>
     <body class="bg-blue-50 text-gray-800">
         <header x-data="{ open: false }" class="bg-white border-b border-gray-100">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-10">
                 <div class="flex justify-between items-center h-16">
+                    <!-- Botones de logo y muro -->
                     <div class="flex items-center space-x-4">
                         <a href="{{ url('/') }}">
                             <x-application-logo class="block h-9 w-auto fill-current text-blue-600" />
@@ -121,138 +175,105 @@
 
         <div class="py-12">
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-                
                 <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                     <div class="flex items-center justify-center w-full transition-opacity opacity-100 duration-750 lg:grow starting:opacity-0">
-                        <main class="w-full">
-                            <!-- Carrusel de imágenes mejorado -->
-                            <div class="relative group">
-                                <div class="carousel-container relative w-full overflow-hidden rounded-t-lg">
-                                    <div class="carousel-inner flex transition-transform duration-700 ease-in-out">
-                                        <div class="carousel-item w-full flex-shrink-0">
-                                            <img src="{{ asset('images/imagen1.jpeg') }}" alt="Imagen 1" class="w-full object-cover h-64 md:h-96 lg:h-[500px] xl:h-[600px]">
-                                            <div class="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent"></div>
-                                        </div>
-                                        <div class="carousel-item w-full flex-shrink-0">
-                                            <img src="{{ asset('images/imagen2.jpeg') }}" alt="Imagen 2" class="w-full object-cover h-64 md:h-96 lg:h-[500px] xl:h-[600px]">
-                                            <div class="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent"></div>
-                                        </div>
-                                        <div class="carousel-item w-full flex-shrink-0">
-                                            <img src="{{ asset('images/imagen3.jpeg') }}" alt="Imagen 3" class="w-full object-cover h-64 md:h-96 lg:h-[500px] xl:h-[600px]">
-                                            <div class="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent"></div>
+                        <!-- Contenido del muro adaptado -->
+                        <div class="w-full">
+                            <!-- Hero Section adaptada -->
+                            <div class="hero-section w-full" style="background: linear-gradient(135deg, #007BFF 0%, #0056b3 100%);">
+                                <div class="px-4 py-12 sm:px-6 lg:px-8">
+                                    <div class="text-center text-white">
+                                        <h1 class="text-4xl font-extrabold tracking-tight sm:text-5xl lg:text-6xl mb-4">Muro de CarwashTemuco</h1>
+                                        <p class="text-xl max-w-3xl mx-auto mb-6">Descubre nuestros últimos trabajos y ofertas especiales</p>
+                                        <div class="inline-flex px-4 py-2 rounded-full" style="background-color: rgba(255,255,255,0.2);">
+                                            <i class="fas fa-sparkles mr-2 mt-1"></i>Profesionales en cuidado automotriz
                                         </div>
                                     </div>
-                                </div>
-
-                                <!-- Botones de navegación mejorados -->
-                                <button id="prev" class="absolute top-1/2 left-4 transform -translate-y-1/2 p-3 bg-white/30 hover:bg-white/50 text-white rounded-full backdrop-blur-sm transition-all duration-300 group-hover:opacity-100 opacity-0">
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
-                                    </svg>
-                                </button>
-                                <button id="next" class="absolute top-1/2 right-4 transform -translate-y-1/2 p-3 bg-white/30 hover:bg-white/50 text-white rounded-full backdrop-blur-sm transition-all duration-300 group-hover:opacity-100 opacity-0">
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-                                    </svg>
-                                </button>
-                                
-                                <!-- Indicadores de posición -->
-                                <div class="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2">
-                                    <div class="w-3 h-3 rounded-full bg-white/50 hover:bg-white cursor-pointer dot-indicator"></div>
-                                    <div class="w-3 h-3 rounded-full bg-white/50 hover:bg-white cursor-pointer dot-indicator"></div>
-                                    <div class="w-3 h-3 rounded-full bg-white/50 hover:bg-white cursor-pointer dot-indicator"></div>
                                 </div>
                             </div>
 
-                            <!-- Hero section -->
-                            <section class="bg-gradient-to-r from-blue-600 to-blue-800 py-20 text-center text-white">
-                                <div class="container mx-auto px-4">
-                                    <h2 class="text-4xl md:text-5xl font-bold mb-6 animate-fade-in">¡Dale brillo a tu auto con Carwash Temuco!</h2>
-                                    <p class="text-xl mb-8 max-w-2xl mx-auto">Reservas fáciles, servicio rápido y de calidad profesional.</p>
-                                    <a href="{{ Auth::check() ? route('user.booking') : route('login') }}" 
-                                    class="inline-block bg-white text-blue-600 hover:bg-gray-100 px-8 py-4 rounded-lg font-semibold text-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
-                                    Reserva Ahora
-                                    </a>
+                            <!-- Content Section adaptada -->
+                            <div class="px-4 py-8 sm:px-6 lg:px-8">
+                                <!-- Filter Bar -->
+                                <div class="mb-8">
+                                    <div class="p-4 rounded-lg shadow-sm" style="background-color: #f8f9fa; border-left: 4px solid #007BFF;">
+                                        <div class="flex items-center justify-between">
+                                            <h5 class="text-lg font-bold m-0" style="color: #007BFF;">
+                                                <i class="fas fa-filter mr-2"></i>Nuestros Trabajos
+                                            </h5>
+                                            <span class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium" style="background-color: #007BFF; color: white;">
+                                                {{ count($activities) }} {{ count($activities) === 1 ? 'publicación' : 'publicaciones' }}
+                                            </span>
+                                        </div>
+                                    </div>
                                 </div>
-                            </section>
 
-                            <!-- Servicios mejorados -->
-                            <section id="servicios" class="py-20 bg-gray-50">
-                                <div class="container mx-auto px-4">
-                                    <h3 class="text-3xl font-bold text-center mb-16 relative inline-block">
-                                        Nuestros Servicios
-                                        <span class="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-16 h-1 bg-blue-500"></span>
-                                    </h3>
-                                    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                                        @foreach($services as $service)
-                                        <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2">
-                                            <div class="h-48 bg-blue-500 flex items-center justify-center">
-                                                <!-- Icono diferente para cada servicio -->
-                                                @switch($loop->index % 3)
-                                                    @case(0)
-                                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-16 w-16 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
-                                                        </svg>
-                                                        @break
-                                                    @case(1)
-                                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-16 w-16 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
-                                                        </svg>
-                                                        @break
-                                                    @case(2)
-                                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-16 w-16 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
-                                                        </svg>
-                                                        @break
-                                                @endswitch
-                                            </div>
-                                            <div class="p-6">
-                                                <h4 class="text-xl font-semibold mb-3">{{ $service->name }}</h4>
-                                                <p class="text-gray-600">{{ $service->description ?? 'Descripción no disponible' }}</p>
-                                                <div class="mt-4 text-blue-600 font-medium">
-                                                    Desde ${{ number_format($service->price, 0, ',', '.') }}
+                                <!-- Activities Grid adaptado -->
+                                <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+                                    @forelse ($activities as $activity)
+                                    <div class="group relative">
+                                        <div class="h-full border-0 rounded-lg overflow-hidden shadow-md group-hover:shadow-lg transition-all duration-300">
+                                            <!-- Image with overlay -->
+                                            <div class="relative overflow-hidden">
+                                                @if($activity->image_path)
+                                                <img src="{{ asset('images/' . $activity->image_path) }}" class="w-full h-56 object-cover transition-transform duration-500 group-hover:scale-105" alt="{{ $activity->title }}">
+                                                @else
+                                                <div class="w-full h-56 flex items-center justify-center" style="background: linear-gradient(45deg, #f8f9fa 0%, #e9ecef 100%);">
+                                                    <i class="fas fa-car text-gray-400 text-5xl opacity-50"></i>
                                                 </div>
-                                                @if($service->duration_minutes)
-                                                    <div class="mt-2 text-sm text-gray-500">
-                                                        Duración: {{ $service->duration_minutes }} minutos
-                                                    </div>
                                                 @endif
+                                                <div class="absolute top-3 right-3">
+                                                    <div class="text-center p-2 rounded" style="background-color: rgba(0, 123, 255, 0.9); color: white; box-shadow: 0 2px 10px rgba(0,0,0,0.1);">
+                                                        <div class="font-bold text-lg">{{ \Carbon\Carbon::parse($activity->scheduled_at)->format('d') }}</div>
+                                                        <div class="text-xs uppercase">{{ \Carbon\Carbon::parse($activity->scheduled_at)->format('M') }}</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            
+                                            <!-- Card Body -->
+                                            <div class="p-6">
+                                                <h5 class="text-xl font-bold mb-3" style="color: #0056b3;">{{ $activity->title }}</h5>
+                                                <p class="text-gray-600 mb-4">{{ $activity->description }}</p>
+                                                
+                                                <!-- Service Tags -->
+                                                <div class="flex flex-wrap mb-3">
+                                                    <span class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium mr-2 mb-2" style="background-color: #e3f2fd; color: #007BFF;">
+                                                        <i class="fas fa-spa mr-1"></i>Lavado premium
+                                                    </span>
+                                                </div>
+                                            </div>
+                                            
+                                            <!-- Card Footer -->
+                                            <div class="px-6 pb-4">
+                                                <div class="flex justify-between items-center">
+                                                    <a href="#" class="inline-flex items-center px-3 py-1 border border-blue-500 rounded-md text-sm font-medium" style="border-color: #007BFF; color: #007BFF;">
+                                                        <i class="fas fa-info-circle mr-1"></i> Detalles
+                                                    </a>
+                                                    <div class="flex space-x-3">
+                                                        <a href="#" class="text-gray-400 hover:text-green-500"><i class="fab fa-whatsapp text-xl" style="color: #25D366;"></i></a>
+                                                        <a href="#" class="text-gray-400 hover:text-blue-500"><i class="fas fa-envelope text-xl" style="color: #007BFF;"></i></a>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
-                                        @endforeach
                                     </div>
-                                </div>
-                            </section>
-                            
-
-                            <!-- Ubicación mejorada -->
-                            <section id="ubicacion" class="py-16 bg-white">
-                                <div class="container mx-auto px-4">
-                                    <h3 class="text-3xl font-bold text-center mb-16 relative inline-block">
-                                        Nuestra Ubicación
-                                        <span class="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-16 h-1 bg-blue-500"></span>
-                                    </h3>
-                                    <div class="bg-white rounded-xl shadow-lg overflow-hidden">
-                                        <div class="h-96 bg-blue-600 flex items-center justify-center">
-                                            <div id="map" style="height: 400px; width: 100%;"></div>
-                                        </div>
-                                        <div class="p-6">
-                                            <h4 class="text-xl font-semibold mb-3">Visítanos en nuestro local</h4>
-                                            <p class="text-gray-600"><span class="font-medium">Dirección:</span> Av. Principal 1234, Temuco</p>
-                                            <p class="text-gray-600"><span class="font-medium">Horario:</span> Lunes a Sábado de 9:00 a 17:00 hrs</p>
-                                            <div class="mt-4">
-                                                <a href="#" class="inline-flex items-center text-blue-600 hover:text-blue-800">
-                                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor">
-                                                        <path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd" />
-                                                    </svg>
-                                                    Cómo llegar
-                                                </a>
+                                    @empty
+                                    <div class="col-span-full">
+                                        <div class="text-center py-12 px-4 rounded-lg" style="background-color: #f8fafc;">
+                                            <div class="mb-6" style="color: #007BFF;">
+                                                <i class="fas fa-car-wash text-5xl"></i>
                                             </div>
+                                            <h4 class="text-2xl font-bold mb-3" style="color: #007BFF;">Aún no hay publicaciones</h4>
+                                            <p class="text-gray-600 mb-6">Pronto compartiremos nuestros trabajos y ofertas especiales</p>
+                                            <button class="px-6 py-2 rounded-md text-white font-medium" style="background-color: #007BFF;">
+                                                <i class="fas fa-bell mr-2"></i> Notificarme
+                                            </button>
                                         </div>
                                     </div>
+                                    @endforelse
                                 </div>
-                            </section>
-                        </main>
+                            </div>
+                        </div>
                     </div>
 
                     @if (Route::has('login'))
@@ -271,9 +292,9 @@
                                     <h4 class="text-xl font-bold mb-4">Enlaces</h4>
                                     <ul class="space-y-2">
                                         <li><a href="#" class="text-blue-200 hover:text-white transition">Inicio</a></li>
-                                        <li><a href="#servicios" class="text-blue-200 hover:text-white transition">Servicios</a></li>
-                                        <li><a href="#ubicacion" class="text-blue-200 hover:text-white transition">Ubicación</a></li>
-                                        <li><a href="#footer" class="text-blue-200 hover:text-white transition">Contacto</a></li>
+                                        <li><a href="{{ url('/#servicios') }}" class="text-blue-200 hover:text-white transition">Servicios</a></li>
+                                        <li><a href="{{ url('/#ubicacion') }}" class="text-blue-200 hover:text-white transition">Ubicación</a></li>
+                                        <li><a href="{{ url('/#footer') }}" class="text-blue-200 hover:text-white transition">Contacto</a></li>
                                     </ul>
                                 </div>
                                 <div>
@@ -306,54 +327,8 @@
                     </footer>
                 </div>
             </div>
-        </div>
+        </div>         
     </body>
-    <script>
-        let currentIndex = 0;
-        const items = document.querySelectorAll('.carousel-item');
-        const totalItems = items.length;
-
-        const prevButton = document.getElementById('prev');
-        const nextButton = document.getElementById('next');
-
-        // Función para mover el carrusel
-        const moveCarousel = (direction) => {
-            if (direction === 'next') {
-                currentIndex = (currentIndex + 1) % totalItems;
-            } else if (direction === 'prev') {
-                currentIndex = (currentIndex - 1 + totalItems) % totalItems;
-            }
-            const newTransformValue = -currentIndex * 100;
-            document.querySelector('.carousel-inner').style.transform = `translateX(${newTransformValue}%)`;
-        };
-
-        // Eventos para los botones (opcional)
-        prevButton.addEventListener('click', () => moveCarousel('prev'));
-        nextButton.addEventListener('click', () => moveCarousel('next'));
-
-        // Movimiento automático del carrusel cada 3 segundos
-        setInterval(() => {
-            moveCarousel('next');
-        }, 3000);
-
-
-        // Función para inicializar el mapa
-        function initMap() {
-            // Crear un objeto LatLng para la ubicación de tu servicio
-            const location = { lat: -38.728415, lng: -72.579291 }; // Cambia las coordenadas con la ubicación de tu servicio
-
-            // Crear el mapa centrado en la ubicación
-            const map = new google.maps.Map(document.getElementById("map"), {
-                zoom: 15, // Nivel de zoom
-                center: location,
-            });
-
-            // Crear un marcador en la ubicación de tu servicio
-            const marker = new google.maps.Marker({
-                position: location,
-                map: map,
-                title: "Mi Servicio", // Puedes poner el nombre de tu servicio aquí
-            });
-        }
-    </script>
+    
 </html>
+    
