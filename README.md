@@ -25,7 +25,7 @@ Aplicación web desarrollada en Laravel para gestionar reservas de lavado de aut
 ![Inicio parte 2](readme-assets/Imagen2.jpg)
 ![Inicio parte 3](readme-assets/Imagen3.jpg)
 ![Modulo servicio](readme-assets/ImagenServicios.jpg)
-![Formulario agregar servicio](readme-assets/ImagenAgregarServicios.png)
+![Formulario agregar servicio](readme-assets/ImagenAgregarServicio.png)
 
 ## 🚀 Funcionalidades principales
 
