@@ -21,7 +21,7 @@ Aplicación web desarrollada en Laravel para gestionar reservas de lavado de aut
 
 ## 📸 Capturas de pantalla
 
-![Inicio parte 1](readme-assets/Imagen1.jpg)
+![Inicio parte 1](readme-assets/Imagen.jpg)
 ![Inicio parte 2](readme-assets/Imagen2.jpg)
 ![Inicio parte 3](readme-assets/Imagen3.jpg)
 ![Modulo servicio](readme-assets/ImagenServicios.jpg)
